@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_network"
+    app:startDestination="@id/networkInfoFragment">
+
+    <fragment
+        android:id="@+id/networkInfoFragment"
+        android:name="com.pavelkazancev02.teztest.ui.network_info.NetworkFragment"
+        android:label="fragment_network"
+        tools:layout="@layout/fragment_network" >
+        <action
+            android:id="@+id/action_networkInfoFragment_to_accountInfoFragment"
+            app:destination="@id/accountInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/accountInfoFragment"
+        android:name="com.pavelkazancev02.teztest.ui.account_info.AccountInfoFragment"
+        android:label="fragment_account_info"
+        tools:layout="@layout/fragment_account_info" >
+        <argument
+            android:name="accountAddress"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/subscriptionsFragment"
+        android:name="com.pavelkazancev02.teztest.ui.subscriptions.SubscriptionsFragment"
+        android:label="fragment_subscriptions"
+        tools:layout="@layout/fragment_subscriptions" >
+        <action
+            android:id="@+id/action_subscriptionsFragment_to_accountInfoFragment"
+            app:destination="@id/accountInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.pavelkazancev02.teztest.ui.settings.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+</navigation>

@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">TezTest App</string>
+    <string name="hello_text">Hello World!</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="settingsTitle">Settings</string>
+    <string name="network_overview">Network Overview</string>
+    <string name="subscriptions">Subscriptions</string>
+    <string name="search_by_address_transaction">Search by Address/Transaction</string>
+    <string name="circulating_supply">CIRCULATING SUPPLY</string>
+    <string name="market_cap">MARKET CAP</string>
+    <string name="loading_data">Loading Data...</string>
+    <string name="tezos_price">TEZOS PRICE</string>
+    <string name="account_info">Account_Info</string>
+    <string name="subscribe">Subscribe</string>
+    <string name="unsubscribe">Unsubscribe</string>
+    <string name="create_account">Create Account</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="balance">Balance</string>
+    <string name="value">Value</string>
+    <string name="network">Network</string>
+    <string name="account_title">User Account</string>
+
+    <string-array name="networkType">
+        <item>Mainnet</item>
+        <item>Carthagenet</item>
+    </string-array>
+</resources>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "543246720558",
+    "firebase_url": "https://teztest-app.firebaseio.com",
+    "project_id": "teztest-app",
+    "storage_bucket": "teztest-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:543246720558:android:16211663255274b29b89bf",
+        "android_client_info": {
+          "package_name": "com.pavelkazancev02.teztest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "543246720558-ssabceal2evp6tv2lsjj7v55s39hedp6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pavelkazancev02.teztest",
+            "certificate_hash": "fb2bcea8f7340f273fe56000bf93a145b312eb2f"
+          }
+        },
+        {
+          "client_id": "543246720558-c8pp4n3rookqopu7s7nidk8kaete5vmg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4eTIDk0X5AIEbsBZppB4bFSekvCvZf44"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "543246720558-c8pp4n3rookqopu7s7nidk8kaete5vmg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

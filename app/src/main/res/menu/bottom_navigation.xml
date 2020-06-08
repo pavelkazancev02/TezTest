@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/networkInfoFragment"
+        android:icon="@drawable/network_info_24dp"
+        android:title="Network" />
+
+    <item
+        android:id="@+id/subscriptionsFragment"
+        android:icon="@drawable/subscriptions_24dp"
+        android:title="Subscriptions" />
+
+    <item
+        android:id="@+id/settingsFragment"
+        android:icon="@drawable/settings_24dp"
+        android:title="Settings" />
+
+</menu>
