@@ -23,6 +23,8 @@
     <string name="value">Value</string>
     <string name="network">Network</string>
     <string name="account_title">User Account</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
 
     <string-array name="networkType">
         <item>Mainnet</item>

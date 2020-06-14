@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="operation"
+            type="com.pavelkazancev02.teztest.data.value_object.account_op.Op" />
+    </data>
+
+<!--    <HorizontalScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="24dp"-->
+<!--        android:layout_marginEnd="24dp">-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/operations_sender"
+            android:layout_width="165dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/loading_data"
+            android:textColor="@color/black1"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/operations_receiver"
+            android:layout_width="165dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/loading_data"
+            android:textColor="@color/black1"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/operations_sender"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="@+id/operations_sender"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/operations_time"
+            android:layout_width="165dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/loading_data"
+            android:textColor="@color/black1"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/operations_sender"
+            app:layout_constraintStart_toEndOf="@+id/operations_receiver"
+            app:layout_constraintTop_toTopOf="@+id/operations_sender"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/operations_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/loading_data"
+            android:textColor="@color/black1"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/operations_sender"
+            app:layout_constraintStart_toEndOf="@+id/operations_time"
+            app:layout_constraintTop_toTopOf="@+id/operations_sender"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <View
+            android:id="@+id/divider2"
+            style="@style/divider_style_v2"
+            android:layout_width="0dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/operations_sender"
+            app:layout_constraintTop_toBottomOf="@+id/operations_sender" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/operations_sender"
+            app:layout_constraintStart_toEndOf="@+id/operations_sender"
+            app:layout_constraintTop_toTopOf="@+id/operations_sender"
+            app:srcCompat="@drawable/ic_arrow" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+<!--    </HorizontalScrollView>-->
+</layout>

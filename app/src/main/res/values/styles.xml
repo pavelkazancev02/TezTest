@@ -32,6 +32,11 @@
         <item name="android:background">@color/dividerColor</item>
     </style>
 
+    <style name="divider_style_v2">
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/dividerColor</item>
+    </style>
+
     <style name="title_style_2">
         <item name="android:layout_marginStart">26dp</item>
         <item name="android:fontFamily">@font/montserrat</item>

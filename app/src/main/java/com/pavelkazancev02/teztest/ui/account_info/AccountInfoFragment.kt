@@ -1,16 +1,23 @@
 package com.pavelkazancev02.teztest.ui.account_info
 
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.pavelkazancev02.teztest.R
 import com.pavelkazancev02.teztest.data.room_db.SubscriptionsDatabase
 import com.pavelkazancev02.teztest.databinding.FragmentAccountInfoBinding
+import com.pavelkazancev02.teztest.ui.account_info.recycler_view.OperationsAdapter
 import com.pavelkazancev02.teztest.ui.network_info.NetworkInfoViewModel
 import com.pavelkazancev02.teztest.ui.network_info.NetworkInfoViewModelFactory
+import com.pavelkazancev02.teztest.ui.subscriptions.recycler_view.InfoClickListener
+import com.pavelkazancev02.teztest.ui.subscriptions.recycler_view.SubscribedAccountsAdapter
+import com.pavelkazancev02.teztest.ui.subscriptions.recycler_view.UnsubscribeClickListener
 
 
 class AccountInfoFragment : Fragment() {
@@ -19,6 +26,7 @@ class AccountInfoFragment : Fragment() {
         ViewModelProviders.of(this).get(AccountInfoViewModel::class.java)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,6 +51,14 @@ class AccountInfoFragment : Fragment() {
         // Giving the binding access to the OverviewViewModel
         binding.viewModel = accountInfoViewModel
 
+        //RecyclerView Adapter
+        val adapter = OperationsAdapter()
+        binding.operationsRecyclerView.adapter = adapter
+
+        //Updating RecyclerView live-time
+        viewModel.accountOperations.observe(viewLifecycleOwner, Observer {
+            adapter.submitList(it.ops)
+        })
 
         return binding.root
     }
