@@ -1,31 +1,36 @@
 package com.pavelkazancev02.teztest.data.api
 
+import com.pavelkazancev02.teztest.data.Variables
 import com.pavelkazancev02.teztest.data.value_object.account.Account
 import com.pavelkazancev02.teztest.data.value_object.account_op.AccountOps
 import com.pavelkazancev02.teztest.data.value_object.explorer_tip.ExplorerTip
 import com.pavelkazancev02.teztest.data.value_object.market_tickers.MarketTickersItem
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import io.reactivex.Single
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
-import retrofit2.http.Header
 import retrofit2.http.Path
-
-private const val BASE_URL = "https://api.tzstats.com/"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
     .build()
 
-private val retrofit = Retrofit.Builder()
+var retrofit = Retrofit.Builder()
     .addConverterFactory(MoshiConverterFactory.create(moshi))
-    .baseUrl(BASE_URL)
+    .baseUrl(Variables.getBaseUrl())
     .build()
 
+fun reBuildRetrofit(){
+    retrofit = Retrofit.Builder()
+        .addConverterFactory(MoshiConverterFactory.create(moshi))
+        .baseUrl(Variables.getBaseUrl())
+        .build()
+}
+
 interface TezosApiService {
+
     @GET ("explorer/tip")
     fun getExplorerTip(): Call<ExplorerTip>
 
@@ -41,7 +46,9 @@ interface TezosApiService {
 }
 
 object TezosApi {
-    val retrofitService : TezosApiService by lazy {
-        retrofit.create(TezosApiService::class.java)
+
+    fun getRetrofitService(): TezosApiService{
+        return retrofit.create(TezosApiService::class.java)
     }
+
 }

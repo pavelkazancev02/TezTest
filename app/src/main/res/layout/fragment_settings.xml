@@ -2,6 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.pavelkazancev02.teztest.ui.settings.SettingsViewModel" />
+    </data>
+
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -55,12 +62,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider1" />
 
-    <Spinner
+    <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:entries="@array/networkType"
+        android:entries="@{viewModel.entries}"
+        android:selectedItemPosition="@={viewModel.networkTypeItemPosition}"
         app:layout_constraintStart_toStartOf="@+id/settings_network_type_title"
         app:layout_constraintTop_toBottomOf="@+id/settings_network_type_title" />
 

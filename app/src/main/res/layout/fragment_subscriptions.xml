@@ -15,11 +15,11 @@
     tools:context=".ui.subscriptions.SubscriptionsFragment">
 
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/subscriptions_network_type"
             style="@style/title_style_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="MAIN NET"
+            android:text="@{subscriptionsViewModel.networkType}"
             app:layout_constraintBottom_toBottomOf="@+id/subscriptions_title"
             app:layout_constraintEnd_toEndOf="@+id/divider1"
             app:layout_constraintTop_toTopOf="@+id/subscriptions_title" />

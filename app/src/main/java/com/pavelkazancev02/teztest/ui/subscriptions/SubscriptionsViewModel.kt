@@ -6,6 +6,8 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
+import com.pavelkazancev02.teztest.data.Variables
+import com.pavelkazancev02.teztest.data.Variables.NETWORK_TYPE
 import com.pavelkazancev02.teztest.data.room_db.SubscribedAccount
 import com.pavelkazancev02.teztest.data.room_db.SubscriptionsDatabaseDao
 import kotlinx.coroutines.*
@@ -27,7 +29,9 @@ class SubscriptionsViewModel(
 
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    val allAccounts = database.getAllAccounts()
+    val allAccounts = database.getAllAccounts(NETWORK_TYPE)
+
+    val networkType = Variables.NETWORK_TYPE
 
     fun onInfoClicked(address: String) {
         _navigateToAccountInfo.value = address

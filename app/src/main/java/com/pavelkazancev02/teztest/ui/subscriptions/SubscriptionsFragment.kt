@@ -1,7 +1,6 @@
 package com.pavelkazancev02.teztest.ui.subscriptions
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +11,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.pavelkazancev02.teztest.databinding.FragmentSubscriptionsBinding
 import com.pavelkazancev02.teztest.R
+import com.pavelkazancev02.teztest.data.Variables.NETWORK_TYPE
 import com.pavelkazancev02.teztest.data.room_db.SubscriptionsDatabase
 import com.pavelkazancev02.teztest.ui.subscriptions.recycler_view.SubscribedAccountsAdapter
 import com.pavelkazancev02.teztest.ui.subscriptions.recycler_view.InfoClickListener
@@ -30,9 +30,11 @@ class SubscriptionsFragment : Fragment() {
 
         val application = requireNotNull(this.activity).application
 
+        val viewModelFactory: SubscriptionsViewModelFactory
+
         val dataSource = SubscriptionsDatabase.getInstance(application).subscriptionsDatabaseDao
 
-        val viewModelFactory = SubscriptionsViewModelFactory(dataSource, application)
+        viewModelFactory = SubscriptionsViewModelFactory(dataSource, application)
 
         val subscriptionsViewModel =
             ViewModelProviders.of(

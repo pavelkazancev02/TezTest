@@ -1,12 +1,13 @@
 package com.pavelkazancev02.teztest.ui.account_info
 
 import android.app.Application
-import android.content.Context
-import android.content.SharedPreferences
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.work.NetworkType
+import com.pavelkazancev02.teztest.data.Variables
+import com.pavelkazancev02.teztest.data.Variables.NETWORK_TYPE
 import com.pavelkazancev02.teztest.data.api.TezosApi
 import com.pavelkazancev02.teztest.data.room_db.SubscribedAccount
 import com.pavelkazancev02.teztest.data.room_db.SubscriptionsDatabaseDao
@@ -17,8 +18,6 @@ import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.text.DecimalFormat
-import java.text.NumberFormat
 
 class AccountInfoViewModel(private val searchFieldData: String = "", val database: SubscriptionsDatabaseDao, application: Application)  : ViewModel() {
 
@@ -26,6 +25,10 @@ class AccountInfoViewModel(private val searchFieldData: String = "", val databas
     private var viewModelJob = Job()
 
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
+
+    val retrofitService = TezosApi.getRetrofitService()
+
+    val networkType = Variables.NETWORK_TYPE
 
     private val  _lastAccount = MutableLiveData<SubscribedAccount?>()
     val lastAccount: LiveData<SubscribedAccount?>
@@ -80,7 +83,7 @@ class AccountInfoViewModel(private val searchFieldData: String = "", val databas
     }
 
     private fun getAccountResponse(address: String) {
-        TezosApi.retrofitService.getAccountData(address).enqueue(object: Callback<Account> {
+        retrofitService.getAccountData(address).enqueue(object: Callback<Account> {
             override fun onFailure(call: Call<Account>, t: Throwable) {
                 //TODO
                 Log.i("test1", t.toString())
@@ -93,10 +96,9 @@ class AccountInfoViewModel(private val searchFieldData: String = "", val databas
     }
 
     private fun getAccountOperations(address: String) {
-        TezosApi.retrofitService.getAccountOperations(address).enqueue(object: Callback<AccountOps> {
+        retrofitService.getAccountOperations(address).enqueue(object: Callback<AccountOps> {
             override fun onFailure(call: Call<AccountOps>, t: Throwable) {
                 //TODO
-                Log.i("test13", t.toString())
             }
 
             override fun onResponse(call: Call<AccountOps>, response: Response<AccountOps>) {
@@ -107,15 +109,13 @@ class AccountInfoViewModel(private val searchFieldData: String = "", val databas
     }
 
     private fun getMarketTickersResponse() {
-        TezosApi.retrofitService.getMarketTickers().enqueue(object: Callback<List<MarketTickersItem>>{
+        retrofitService.getMarketTickers().enqueue(object: Callback<List<MarketTickersItem>>{
             override fun onFailure(call: Call<List<MarketTickersItem>>, t: Throwable) {
                 //TODO
-                Log.i("failure", t.message)
             }
 
             override fun onResponse(call: Call<List<MarketTickersItem>>, response: Response<List<MarketTickersItem>>) {
                 _marketTickersResponse.value = response.body()
-                Log.i("failure", _marketTickersResponse.value.toString())
             }
         })
     }
@@ -159,7 +159,7 @@ class AccountInfoViewModel(private val searchFieldData: String = "", val databas
 
     private suspend fun addAccountToDatabase(address: String) {
         uiScope.launch {
-            val newAccount = SubscribedAccount(accountAddress = address)
+            val newAccount = SubscribedAccount(accountAddress = address, networkType = NETWORK_TYPE)
             insert(newAccount)
         }
     }

@@ -1,5 +1,12 @@
 package com.pavelkazancev02.teztest.data
 
 object Variables {
-    var baseURL: String = "https://api.tzstats.com"
+    var NETWORK_TYPE: String = "Mainnet"
+
+    fun getBaseUrl(): String {
+        if (NETWORK_TYPE == "Mainnet")
+            return "https://api.tzstats.com"
+        else
+            return "https://api.carthagenet.tzstats.com"
+    }
 }

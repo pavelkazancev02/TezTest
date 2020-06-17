@@ -20,8 +20,8 @@ interface SubscriptionsDatabaseDao {
     fun removeByAddress(address: String)
     @Query("DELETE FROM subscribed_accounts_table")
     fun clear()
-    @Query("SELECT * FROM subscribed_accounts_table ORDER BY accountId DESC")
-    fun getAllAccounts(): LiveData<List<SubscribedAccount>>
+    @Query("SELECT * FROM subscribed_accounts_table WHERE network_type = :networkType ORDER BY accountId DESC")
+    fun getAllAccounts(networkType: String): LiveData<List<SubscribedAccount>>
     @Query("SELECT * FROM subscribed_accounts_table ORDER BY accountId DESC LIMIT 1")
     fun getLastAccount(): SubscribedAccount?
 

@@ -9,15 +9,9 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.pavelkazancev02.teztest.R
 import com.pavelkazancev02.teztest.data.room_db.SubscriptionsDatabase
 import com.pavelkazancev02.teztest.databinding.FragmentAccountInfoBinding
 import com.pavelkazancev02.teztest.ui.account_info.recycler_view.OperationsAdapter
-import com.pavelkazancev02.teztest.ui.network_info.NetworkInfoViewModel
-import com.pavelkazancev02.teztest.ui.network_info.NetworkInfoViewModelFactory
-import com.pavelkazancev02.teztest.ui.subscriptions.recycler_view.InfoClickListener
-import com.pavelkazancev02.teztest.ui.subscriptions.recycler_view.SubscribedAccountsAdapter
-import com.pavelkazancev02.teztest.ui.subscriptions.recycler_view.UnsubscribeClickListener
 
 
 class AccountInfoFragment : Fragment() {

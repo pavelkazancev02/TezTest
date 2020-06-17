@@ -10,5 +10,7 @@ data class SubscribedAccount(
     @PrimaryKey(autoGenerate = true)
     val accountId: Long = 0L,
     @ColumnInfo(name = "account_address")
-    val accountAddress: String = "account_address"
+    val accountAddress: String = "account_address",
+    @ColumnInfo(name = "network_type")
+    val networkType: String = "Mainnet"
 )

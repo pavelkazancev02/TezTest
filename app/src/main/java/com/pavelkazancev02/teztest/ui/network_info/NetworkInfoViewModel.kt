@@ -1,18 +1,12 @@
 package com.pavelkazancev02.teztest.ui.network_info
 
 import android.app.Application
-import android.content.Context.MODE_PRIVATE
-import android.content.SharedPreferences
-import android.location.Address
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.bumptech.glide.Glide
+import com.pavelkazancev02.teztest.data.Variables.NETWORK_TYPE
 import com.pavelkazancev02.teztest.data.api.TezosApi
-import com.pavelkazancev02.teztest.data.room_db.SubscriptionsDatabaseDao
-import com.pavelkazancev02.teztest.data.value_object.account.Account
 import com.pavelkazancev02.teztest.data.value_object.explorer_tip.ExplorerTip
 import com.pavelkazancev02.teztest.data.value_object.market_tickers.MarketTickersItem
 //import com.pavelkazancev02.teztest.data.api.TezosApiClient
@@ -27,9 +21,19 @@ class NetworkInfoViewModel(
     application: Application
 ) : AndroidViewModel(application) {
 
+
     val decimalFormat = DecimalFormat("#,###")
 
+    val retrofitService = TezosApi.getRetrofitService()
+
     var accountAddress = String()
+
+
+    var graphUrl = ""
+
+    var graphVisibility = false
+
+    val networkType = NETWORK_TYPE
 
     private val _navigateToAccountInfo = MutableLiveData<String>()
     val navigateToAccountInfo: LiveData<String>
@@ -53,12 +57,17 @@ class NetworkInfoViewModel(
         accountAddress = ""
         getExplorerTipResponse()
         getMarketTickersResponse()
+        if (NETWORK_TYPE=="Mainnet") {
+            graphUrl = "https://s2.coinmarketcap.com/generated/sparklines/web/1d/usd/2011.png"
+            graphVisibility = true
+        }
     }
 
 
 
     private fun getExplorerTipResponse() {
-        TezosApi.retrofitService.getExplorerTip().enqueue(object: Callback<ExplorerTip>{
+
+        retrofitService.getExplorerTip().enqueue(object: Callback<ExplorerTip>{
             override fun onFailure(call: Call<ExplorerTip>, t: Throwable) {
                 //TODO
             }
@@ -70,7 +79,7 @@ class NetworkInfoViewModel(
     }
 
     private fun getMarketTickersResponse() {
-        TezosApi.retrofitService.getMarketTickers().enqueue(object: Callback<List<MarketTickersItem>>{
+        retrofitService.getMarketTickers().enqueue(object: Callback<List<MarketTickersItem>>{
             override fun onFailure(call: Call<List<MarketTickersItem>>, t: Throwable) {
                 //TODO
                 Log.i("failure", t.message)

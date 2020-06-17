@@ -137,9 +137,12 @@
                 android:id="@+id/graph"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="54dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="44dp"
+                android:layout_marginEnd="30dp"
+                android:visibility="@{viewModel.graphVisibility}"
+                android:tint="@color/colorPrimary"
+                app:imageUrl="@{viewModel.graphUrl}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/network_market_cap"
@@ -190,8 +193,8 @@
                 style="@style/title_style_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="27dp"
-                android:text="Last 7 Days"
+                android:visibility="@{viewModel.graphVisibility}"
+                android:text="Last 24 hours"
                 app:layout_constraintBottom_toBottomOf="@+id/textView4"
                 app:layout_constraintEnd_toEndOf="@+id/graph"
                 app:layout_constraintTop_toTopOf="@+id/textView4" />
@@ -202,8 +205,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="$ 2,7"
-                app:layout_constraintStart_toStartOf="@+id/graph"
+                android:visibility="@{viewModel.graphVisibility}"
+                android:text='@{"$ "+viewModel.marketTickersResponse.get(11).low}'
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/graph" />
 
             <TextView
@@ -212,16 +216,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="$ 3,2"
+                android:visibility="@{viewModel.graphVisibility}"
+                android:text='@{"$ "+viewModel.marketTickersResponse.get(11).high}'
                 app:layout_constraintBottom_toTopOf="@+id/graph"
-                app:layout_constraintStart_toStartOf="@+id/graph" />
+                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/network_network_type"
                 style="@style/title_style_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="MAIN NET"
+                android:text="@{viewModel.networkType}"
                 app:layout_constraintBottom_toBottomOf="@+id/network_title"
                 app:layout_constraintEnd_toEndOf="@+id/divider1"
                 app:layout_constraintTop_toTopOf="@+id/network_title" />
