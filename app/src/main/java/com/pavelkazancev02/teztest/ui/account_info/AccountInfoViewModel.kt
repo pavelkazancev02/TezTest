@@ -28,7 +28,9 @@ class AccountInfoViewModel(private val searchFieldData: String = "", val databas
 
     val retrofitService = TezosApi.getRetrofitService()
 
-    val networkType = Variables.NETWORK_TYPE
+    val networkType = NETWORK_TYPE
+
+    var accountType = "User Account"
 
     private val  _lastAccount = MutableLiveData<SubscribedAccount?>()
     val lastAccount: LiveData<SubscribedAccount?>
@@ -61,6 +63,8 @@ class AccountInfoViewModel(private val searchFieldData: String = "", val databas
     init {
 
        if (checkAddressExistance()){
+           if(searchFieldData[0]=='K')
+               accountType = "Smart Contract"
            displayData()
            checkSubscription()
        }

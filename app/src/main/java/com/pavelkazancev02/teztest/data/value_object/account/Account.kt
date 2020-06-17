@@ -158,5 +158,5 @@ data class Account(
     @Json(name = "traffic_rank")
     val trafficRank: Int,
     @Json(name = "unclaimed_balance")
-    val unclaimedBalance: Int
+    val unclaimedBalance: Double
 )

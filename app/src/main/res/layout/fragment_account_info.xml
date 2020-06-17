@@ -121,7 +121,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:layout_marginTop="24dp"
-                    android:text="User Account"
+                    android:text="@{viewModel.accountType}"
                     app:layout_constraintStart_toStartOf="@+id/account_info_search_account"
                     app:layout_constraintTop_toBottomOf="@+id/account_info_search_account" />
 

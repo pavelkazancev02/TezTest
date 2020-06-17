@@ -29,7 +29,10 @@ class SubscribedAccountsAdapter(val infoClickListener: InfoClickListener, val un
             item: SubscribedAccount, infoClickListener: InfoClickListener, unsubscribeClickListener: UnsubscribeClickListener
         ) {
             binding.account = item
-            binding.subscriptionsAccountTitle.text = "User Account"
+            if (item.accountAddress.get(0)=='K')
+            binding.subscriptionsAccountTitle.text = "Smart Contract"
+            else
+                    binding.subscriptionsAccountTitle.text = "User Account"
             binding.subscriptionsAccountAddress.text = item.accountAddress
             binding.infoClickListener = infoClickListener
             binding.unsubscribeClickListener = unsubscribeClickListener

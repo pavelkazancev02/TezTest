@@ -3,6 +3,7 @@
     package="com.pavelkazancev02.teztest">
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
+        android:name=".TezTestApp"
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
