@@ -15,16 +15,6 @@
     tools:context=".ui.settings.SettingsFragment">
 
     <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="//Test Button"
-        app:layout_constraintBottom_toTopOf="@+id/notification_test"
-        app:layout_constraintEnd_toEndOf="@+id/notification_test"
-        app:layout_constraintStart_toStartOf="@+id/notification_test" />
-
-    <TextView
         android:id="@+id/settings_title"
         style="@style/title_style"
         android:layout_marginStart="24dp"
@@ -71,16 +61,6 @@
         android:selectedItemPosition="@={viewModel.networkTypeItemPosition}"
         app:layout_constraintStart_toStartOf="@+id/settings_network_type_title"
         app:layout_constraintTop_toBottomOf="@+id/settings_network_type_title" />
-
-    <Button
-        android:id="@+id/notification_test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:text="GET NOTIFICATION"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

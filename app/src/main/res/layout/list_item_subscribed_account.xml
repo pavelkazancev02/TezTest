@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -91,6 +92,19 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/subscriptions_info_button" />
+
+        <TextView
+            android:id="@+id/new_transactions"
+            android:layout_width="21dp"
+            android:layout_height="21dp"
+            android:background="@drawable/notif_circle"
+            android:fontFamily="@font/montserrat"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/divider2"
+            app:layout_constraintTop_toTopOf="@+id/subscriptions_account_title" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

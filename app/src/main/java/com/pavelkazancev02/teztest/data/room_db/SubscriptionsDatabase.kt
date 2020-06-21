@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [SubscribedAccount::class], version = 2,  exportSchema = false)
+@Database(entities = [SubscribedAccount::class], version = 6,  exportSchema = false)
 abstract class SubscriptionsDatabase : RoomDatabase() {
     abstract val subscriptionsDatabaseDao: SubscriptionsDatabaseDao
     companion object {

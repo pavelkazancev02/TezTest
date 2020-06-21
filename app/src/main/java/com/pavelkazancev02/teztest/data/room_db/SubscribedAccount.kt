@@ -12,5 +12,10 @@ data class SubscribedAccount(
     @ColumnInfo(name = "account_address")
     val accountAddress: String = "account_address",
     @ColumnInfo(name = "network_type")
-    val networkType: String = "Mainnet"
+    val networkType: String = "Mainnet",
+    @ColumnInfo(name = "last_transaction")
+    val lastTransaction: String? = "",
+    @ColumnInfo(name = "new_transactions")
+    val newTransactions: Int = 0
+
 )

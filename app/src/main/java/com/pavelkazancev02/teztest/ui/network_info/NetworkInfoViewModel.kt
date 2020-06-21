@@ -52,17 +52,36 @@ class NetworkInfoViewModel(
     val explorerTipResponse : LiveData<ExplorerTip>
         get() = _explorerTipResponse
 
+    private val _weekPriceResponse = MutableLiveData<List<List<String>>>()
+    val weekPriceResponse : LiveData<List<List<String>>>
+        get() = _weekPriceResponse
+
 
     init {
         accountAddress = ""
         getExplorerTipResponse()
         getMarketTickersResponse()
+        getWeekPrice()
         if (NETWORK_TYPE=="Mainnet") {
-            graphUrl = "https://s2.coinmarketcap.com/generated/sparklines/web/1d/usd/2011.png"
+            graphUrl = "https://s2.coinmarketcap.com/generated/sparklines/web/7d/usd/2011.png"
             graphVisibility = true
         }
     }
 
+    private fun getWeekPrice() {
+        retrofitService.getWeekPrice().enqueue(object: Callback<List<List<String>>>{
+            override fun onFailure( call: Call<List<List<String>>>, t: Throwable) {
+                //TODO
+            }
+
+            override fun onResponse(
+                call: Call<List<List<String>>>,
+                response: Response<List<List<String>>>
+            ) {
+                _weekPriceResponse.value = response.body()
+            }
+        })
+    }
 
 
     private fun getExplorerTipResponse() {

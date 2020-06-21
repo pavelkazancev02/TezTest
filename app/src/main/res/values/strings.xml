@@ -25,6 +25,11 @@
     <string name="account_title">User Account</string>
     <string name="from">From</string>
     <string name="to">To</string>
+    <string name="confirm_email">Confirm Email</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="do_not_have_an_account">Do not have an account?</string>
+    <string name="last_7_days">Last 7 Days</string>
 
     <string-array name="networkType">
         <item>Mainnet</item>

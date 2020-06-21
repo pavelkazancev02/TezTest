@@ -2,6 +2,7 @@ package com.pavelkazancev02.teztest.ui.account_info
 
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -29,7 +30,6 @@ class AccountInfoFragment : Fragment() {
 
         val application = requireNotNull(this.activity).application
         val dataSource = SubscriptionsDatabase.getInstance(application).subscriptionsDatabaseDao
-
         val arguments = AccountInfoFragmentArgs.fromBundle(arguments!!)
 
         val viewModelFactory = AccountInfoViewModelFactory(arguments.accountAddress, dataSource, application)

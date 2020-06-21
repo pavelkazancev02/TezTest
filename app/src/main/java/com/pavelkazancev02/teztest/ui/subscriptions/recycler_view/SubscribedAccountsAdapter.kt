@@ -1,6 +1,7 @@
 package com.pavelkazancev02.teztest.ui.subscriptions.recycler_view
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -34,6 +35,10 @@ class SubscribedAccountsAdapter(val infoClickListener: InfoClickListener, val un
             else
                     binding.subscriptionsAccountTitle.text = "User Account"
             binding.subscriptionsAccountAddress.text = item.accountAddress
+            binding.newTransactions.text = item.newTransactions.toString()
+            if(item.newTransactions==0){
+                binding.newTransactions.visibility = View.GONE
+            }
             binding.infoClickListener = infoClickListener
             binding.unsubscribeClickListener = unsubscribeClickListener
         }

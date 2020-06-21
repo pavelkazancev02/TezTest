@@ -25,6 +25,8 @@ class SubscriptionsViewModel(
         _navigateToAccountInfo.value = null
     }
 
+
+
     private var viewModelJob = Job()
 
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)

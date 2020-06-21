@@ -67,8 +67,21 @@ class AccountInfoViewModel(private val searchFieldData: String = "", val databas
                accountType = "Smart Contract"
            displayData()
            checkSubscription()
+           updateNewTransactionsCount(searchFieldData)
        }
         else displayError()
+    }
+
+    private fun updateNewTransactionsCount(address: String) {
+        uiScope.launch {
+            updateNewTransactionsInDatabase(address)
+        }
+    }
+
+    private suspend fun updateNewTransactionsInDatabase(address: String) {
+        withContext(Dispatchers.IO) {
+            database.updateNewTransactions(address,0)
+        }
     }
 
     private fun displayError() {
@@ -163,7 +176,7 @@ class AccountInfoViewModel(private val searchFieldData: String = "", val databas
 
     private suspend fun addAccountToDatabase(address: String) {
         uiScope.launch {
-            val newAccount = SubscribedAccount(accountAddress = address, networkType = NETWORK_TYPE)
+            val newAccount = SubscribedAccount(accountAddress = address, networkType = NETWORK_TYPE, lastTransaction = accountOperations.value?.ops?.get(0)?.hash)
             insert(newAccount)
         }
     }

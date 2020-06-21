@@ -194,7 +194,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:visibility="@{viewModel.graphVisibility}"
-                android:text="Last 24 hours"
+                android:text="@string/last_7_days"
                 app:layout_constraintBottom_toBottomOf="@+id/textView4"
                 app:layout_constraintEnd_toEndOf="@+id/graph"
                 app:layout_constraintTop_toTopOf="@+id/textView4" />
@@ -206,7 +206,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:visibility="@{viewModel.graphVisibility}"
-                android:text='@{"$ "+viewModel.marketTickersResponse.get(11).low}'
+                android:text='@{"$ "+viewModel.weekPriceResponse.get(1).get(3)}'
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/graph" />
 
@@ -217,7 +217,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:visibility="@{viewModel.graphVisibility}"
-                android:text='@{"$ "+viewModel.marketTickersResponse.get(11).high}'
+                android:text='@{"$ "+viewModel.weekPriceResponse.get(1).get(2)}'
                 app:layout_constraintBottom_toTopOf="@+id/graph"
                 app:layout_constraintStart_toStartOf="parent" />
 
