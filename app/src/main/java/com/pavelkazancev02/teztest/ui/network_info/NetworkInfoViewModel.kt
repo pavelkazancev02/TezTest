@@ -26,8 +26,7 @@ class NetworkInfoViewModel(
 
     val retrofitService = TezosApi.getRetrofitService()
 
-    var accountAddress = String()
-
+    var searchFieldData = String()
 
     var graphUrl = ""
 
@@ -39,8 +38,13 @@ class NetworkInfoViewModel(
     val navigateToAccountInfo: LiveData<String>
             get() = _navigateToAccountInfo
 
+    private val _navigateToTransactionInfo = MutableLiveData<String>()
+    val navigateToTransactionInfo: LiveData<String>
+        get() = _navigateToTransactionInfo
+
     fun doneNavigating(){
         _navigateToAccountInfo.value = null
+        _navigateToTransactionInfo.value = null
     }
 
 
@@ -58,12 +62,12 @@ class NetworkInfoViewModel(
 
 
     init {
-        accountAddress = ""
+        searchFieldData = ""
         getExplorerTipResponse()
         getMarketTickersResponse()
         getWeekPrice()
         if (NETWORK_TYPE=="Mainnet") {
-            graphUrl = "https://s2.coinmarketcap.com/generated/sparklines/web/7d/usd/2011.png"
+            graphUrl = "s2.coinmarketcap.com/generated/sparklines/web/7d/usd/2011.png"
             graphVisibility = true
         }
     }
@@ -112,8 +116,10 @@ class NetworkInfoViewModel(
     }
 
     fun onSearch(){
-        if (accountAddress.length == 36)
-        _navigateToAccountInfo.value = accountAddress
+        if (searchFieldData.length == 36)
+            _navigateToAccountInfo.value = searchFieldData
+        else if(searchFieldData.length == 51)
+            _navigateToTransactionInfo.value = searchFieldData
     }
 
 }

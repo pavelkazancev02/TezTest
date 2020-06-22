@@ -36,6 +36,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/network_title" />
 
+            <View
+                android:id="@+id/divider2"
+                style="@style/divider_style"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/first_name_layout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -56,7 +67,7 @@
                     android:fontFamily="@font/montserrat"
                     android:hint="@string/search_by_address_transaction"
                     android:inputType="textPersonName"
-                    android:text='@={viewModel.accountAddress}' />
+                    android:text="@={viewModel.searchFieldData}" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -140,8 +151,8 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="44dp"
                 android:layout_marginEnd="30dp"
-                android:visibility="@{viewModel.graphVisibility}"
                 android:tint="@color/colorPrimary"
+                android:visibility="@{viewModel.graphVisibility}"
                 app:imageUrl="@{viewModel.graphUrl}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -153,18 +164,48 @@
                 style="@style/title_style_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="48dp"
+                android:layout_marginTop="16dp"
                 android:text="TOTAL ACCOUNTS: "
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/graph" />
+                app:layout_constraintTop_toBottomOf="@+id/network_cycle_title" />
+
+            <TextView
+                android:id="@+id/network_cycle_title"
+                style="@style/title_style_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="CYCLE: "
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider2" />
 
             <TextView
                 android:id="@+id/additional_data2"
                 style="@style/title_style_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="50dp"
                 android:text="NEW ACCOUNTS (30 DAYS): "
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/additional_data" />
+
+            <TextView
+                android:id="@+id/network_funded_accounts_30d_title"
+                style="@style/title_style_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="FUNDED ACCOUNTS (30 DAYS): "
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/additional_data2" />
+
+            <TextView
+                android:id="@+id/network_funded_accounts_title"
+                style="@style/title_style_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="FUNDED ACCOUNTS:"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/additional_data" />
 
@@ -176,7 +217,7 @@
                 android:layout_marginTop="16dp"
                 android:text="DELEGATORS: "
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/additional_data2" />
+                app:layout_constraintTop_toBottomOf="@+id/network_funded_accounts_30d_title" />
 
             <TextView
                 android:id="@+id/additional_data5"
@@ -193,8 +234,8 @@
                 style="@style/title_style_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="@{viewModel.graphVisibility}"
                 android:text="@string/last_7_days"
+                android:visibility="@{viewModel.graphVisibility}"
                 app:layout_constraintBottom_toBottomOf="@+id/textView4"
                 app:layout_constraintEnd_toEndOf="@+id/graph"
                 app:layout_constraintTop_toTopOf="@+id/textView4" />
@@ -205,8 +246,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:visibility="@{viewModel.graphVisibility}"
                 android:text='@{"$ "+viewModel.weekPriceResponse.get(1).get(3)}'
+                android:visibility="@{viewModel.graphVisibility}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/graph" />
 
@@ -216,8 +257,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:visibility="@{viewModel.graphVisibility}"
                 android:text='@{"$ "+viewModel.weekPriceResponse.get(1).get(2)}'
+                android:visibility="@{viewModel.graphVisibility}"
                 app:layout_constraintBottom_toTopOf="@+id/graph"
                 app:layout_constraintStart_toStartOf="parent" />
 
@@ -245,6 +286,32 @@
                 app:layout_constraintTop_toTopOf="@+id/additional_data" />
 
             <TextView
+                android:id="@+id/network_cycle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/montserrat"
+                android:text='@{viewModel.explorerTipResponse.cycle+" "}'
+                android:textColor="@color/black1"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/network_cycle_title"
+                app:layout_constraintStart_toEndOf="@+id/network_cycle_title"
+                app:layout_constraintTop_toTopOf="@+id/network_cycle_title" />
+
+            <TextView
+                android:id="@+id/network_funded_accounts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/montserrat"
+                android:text='@{viewModel.explorerTipResponse.fundedAccounts+" "}'
+                android:textColor="@color/black1"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/network_funded_accounts_title"
+                app:layout_constraintStart_toEndOf="@+id/network_funded_accounts_title"
+                app:layout_constraintTop_toTopOf="@+id/network_funded_accounts_title" />
+
+            <TextView
                 android:id="@+id/total_accounts2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -256,6 +323,19 @@
                 app:layout_constraintBottom_toBottomOf="@+id/additional_data2"
                 app:layout_constraintStart_toEndOf="@+id/additional_data2"
                 app:layout_constraintTop_toTopOf="@+id/additional_data2" />
+
+            <TextView
+                android:id="@+id/network_funded_accounts_30d"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/montserrat"
+                android:text='@{viewModel.explorerTipResponse.fundedAccounts30d+" "}'
+                android:textColor="@color/black1"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/network_funded_accounts_30d_title"
+                app:layout_constraintStart_toEndOf="@+id/network_funded_accounts_30d_title"
+                app:layout_constraintTop_toTopOf="@+id/network_funded_accounts_30d_title" />
 
             <TextView
                 android:id="@+id/total_accounts3"
