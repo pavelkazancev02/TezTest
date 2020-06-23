@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.pavelkazancev02.teztest.ui.block_info.BlockInfoViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:id="@+id/divider4"
+                    style="@style/divider_style"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/block_info_block_hash" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/block_info_search_account"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:boxStrokeColor="@color/colorPrimary"
+                    app:layout_constraintEnd_toStartOf="@+id/block_info_search_button"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/block_info_search_edit_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:hint="@string/search_by_address_transaction"
+                        android:inputType="textPersonName" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <ImageButton
+                    android:id="@+id/block_info_search_button"
+                    style="@style/title_button_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:padding="10dp"
+                    android:src="@drawable/search_30dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/block_info_search_account"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/block_info_search_account" />
+
+                <TextView
+                    android:id="@+id/block_info_block_hash"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="sans-serif"
+                    android:text='@{viewModel.blockResponse.hash}'
+                    android:textColor="@color/black1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/block_info_title"
+                    app:layout_constraintTop_toBottomOf="@+id/block_info_title" />
+
+                <TextView
+                    android:id="@+id/block_info_title"
+                    style="@style/title_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/block"
+                    app:layout_constraintStart_toStartOf="@+id/block_info_search_account"
+                    app:layout_constraintTop_toBottomOf="@+id/block_info_search_account" />
+
+                <TextView
+                    android:id="@+id/block_info_baker_title"
+                    style="@style/title_style_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:text="@string/baker"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider4" />
+
+                <TextView
+                    android:id="@+id/block_info_baker"
+                    style="@style/general_data_style_transactions"
+                    android:text='@{viewModel.blockResponse.baker}'
+                    app:layout_constraintStart_toStartOf="@+id/block_info_baker_title"
+                    app:layout_constraintTop_toBottomOf="@+id/block_info_baker_title" />
+
+                <TextView
+                    android:id="@+id/block_info_time_title"
+                    style="@style/title_style_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/time"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/block_info_baker" />
+
+                <TextView
+                    android:id="@+id/block_info_operations_title"
+                    style="@style/title_style_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/operations"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/block_info_time" />
+
+                <TextView
+                    android:id="@+id/block_info_volume_title"
+                    style="@style/title_style_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/volume"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/block_info_operations" />
+
+                <TextView
+                    android:id="@+id/block_info_fee_title"
+                    style="@style/title_style_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/fee"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/block_info_volume" />
+
+                <TextView
+                    android:id="@+id/block_info_time"
+                    style="@style/general_data_style_transactions"
+                    android:text='@{viewModel.blockResponse.time}'
+                    app:layout_constraintStart_toStartOf="@+id/block_info_time_title"
+                    app:layout_constraintTop_toBottomOf="@+id/block_info_time_title" />
+
+                <TextView
+                    android:id="@+id/block_info_operations"
+                    style="@style/general_data_style_transactions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text='@{viewModel.blockResponse.NOps+" "}'
+                    app:layout_constraintStart_toStartOf="@+id/block_info_operations_title"
+                    app:layout_constraintTop_toBottomOf="@+id/block_info_operations_title" />
+
+                <TextView
+                    android:id="@+id/block_info_volume"
+                    style="@style/general_data_style_transactions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text='@{viewModel.blockResponse.volume+" ꜩ"}'
+                    app:layout_constraintStart_toStartOf="@+id/block_info_volume_title"
+                    app:layout_constraintTop_toBottomOf="@+id/block_info_volume_title" />
+
+                <TextView
+                    android:id="@+id/block_info_fee"
+                    style="@style/general_data_style_transactions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text='@{viewModel.blockResponse.fee+" ꜩ"}'
+                    app:layout_constraintStart_toStartOf="@+id/block_info_fee_title"
+                    app:layout_constraintTop_toBottomOf="@+id/block_info_fee_title" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

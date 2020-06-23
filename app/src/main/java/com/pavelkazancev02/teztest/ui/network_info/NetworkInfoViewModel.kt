@@ -42,6 +42,9 @@ class NetworkInfoViewModel(
     val navigateToTransactionInfo: LiveData<String>
         get() = _navigateToTransactionInfo
 
+    private val _showLoadingBar = MutableLiveData<Boolean>()
+    val showLoadingBar: LiveData<Boolean> get() = _showLoadingBar
+
     fun doneNavigating(){
         _navigateToInfo.value = null
         _navigateToTransactionInfo.value = null
@@ -63,6 +66,7 @@ class NetworkInfoViewModel(
 
     init {
         searchFieldData = ""
+        _showLoadingBar.value=true
         getExplorerTipResponse()
         getMarketTickersResponse()
         getWeekPrice()
@@ -83,6 +87,7 @@ class NetworkInfoViewModel(
                 response: Response<List<List<String>>>
             ) {
                 _weekPriceResponse.value = response.body()
+                _showLoadingBar.value=false
             }
         })
     }
@@ -118,7 +123,6 @@ class NetworkInfoViewModel(
     fun onSearch(){
         if (searchFieldData.length == 36 || searchFieldData.length == 51)
             _navigateToInfo.value = searchFieldData
-
     }
 
 }

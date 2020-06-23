@@ -4,6 +4,7 @@ import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterF
 import com.pavelkazancev02.teztest.data.Variables
 import com.pavelkazancev02.teztest.data.value_object.account.Account
 import com.pavelkazancev02.teztest.data.value_object.account_op.AccountOps
+import com.pavelkazancev02.teztest.data.value_object.block.Block
 import com.pavelkazancev02.teztest.data.value_object.explorer_tip.ExplorerTip
 import com.pavelkazancev02.teztest.data.value_object.market_tickers.MarketTickersItem
 import com.pavelkazancev02.teztest.data.value_object.transaction.Transaction
@@ -51,6 +52,10 @@ interface TezosApiService {
 
     @GET ("explorer/op/{transaction_hash}")
     fun getTransactionData(@Path("transaction_hash") hash: String): Call<List<Transaction>>
+
+    @GET ("explorer/block/{block_hash}")
+    fun getBlockData(@Path("block_hash") hash: String): Call<Block>
+
 }
 
 object TezosApi {

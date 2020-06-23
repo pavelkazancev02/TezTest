@@ -46,10 +46,27 @@ class NetworkFragment : Fragment() {
                     NetworkFragmentDirections.actionNetworkInfoFragmentToAccountInfoFragment(navEvent))
                 networkInfoViewModel.doneNavigating()
                 }
-                else if (navEvent.length==51){
+
+                else if (navEvent.length==51 && navEvent[0]=='B'){
+                    this.findNavController().navigate(
+                        NetworkFragmentDirections.actionNetworkInfoFragmentToBlockInfoFragment(navEvent))
+                    networkInfoViewModel.doneNavigating()
+                }
+
+                else if (navEvent.length==51 && navEvent[0]=='o'){
                     this.findNavController().navigate(
                         NetworkFragmentDirections.actionNetworkInfoFragmentToTransactionInfoFragment(navEvent))
                     networkInfoViewModel.doneNavigating()
+                }
+            }
+        })
+
+        networkInfoViewModel.showLoadingBar.observe(viewLifecycleOwner, Observer { showEvent ->
+            showEvent?.let {
+                if (it) {
+                    binding.loadingBar.visibility = View.VISIBLE
+                } else {
+                    binding.loadingBar.visibility = View.GONE
                 }
             }
         })

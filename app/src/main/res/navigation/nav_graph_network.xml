@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_networkInfoFragment_to_transactionInfoFragment"
             app:destination="@id/transactionInfoFragment" />
+        <action
+            android:id="@+id/action_networkInfoFragment_to_blockInfoFragment"
+            app:destination="@id/blockInfoFragment" />
     </fragment>
     <fragment
         android:id="@+id/accountInfoFragment"
@@ -48,5 +51,13 @@
     <argument
         android:name="transactionHash"
         app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/blockInfoFragment"
+        android:name="com.pavelkazancev02.teztest.ui.block_info.BlockInfoFragment"
+        android:label="BlockInfoFragment" >
+        <argument
+            android:name="blockHash"
+            app:argType="string" />
     </fragment>
 </navigation>

@@ -10,10 +10,12 @@
     </data>
 
     <ScrollView
+        android:id="@+id/network_info_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/network_info_cons_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:context=".ui.network_info.NetworkFragment">
@@ -364,6 +366,19 @@
                 app:layout_constraintBottom_toBottomOf="@+id/additional_data5"
                 app:layout_constraintStart_toEndOf="@+id/additional_data5"
                 app:layout_constraintTop_toTopOf="@+id/additional_data5" />
+
+            <ProgressBar
+                android:id="@+id/loading_bar"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/colorPrimary"
+                android:indeterminateTintMode="src_atop"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

@@ -33,6 +33,12 @@
     <string name="transaction">Transaction</string>
     <string name="sender">Sender</string>
     <string name="receiver">Receiver</string>
+    <string name="block">Block</string>
+    <string name="baker">Baker</string>
+    <string name="time">Time</string>
+    <string name="operations">Operations</string>
+    <string name="volume">Volume</string>
+    <string name="fee">Fee</string>
 
     <string-array name="networkType">
         <item>Mainnet</item>
