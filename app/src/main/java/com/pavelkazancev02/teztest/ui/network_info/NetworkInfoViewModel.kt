@@ -34,16 +34,16 @@ class NetworkInfoViewModel(
 
     val networkType = NETWORK_TYPE
 
-    private val _navigateToAccountInfo = MutableLiveData<String>()
-    val navigateToAccountInfo: LiveData<String>
-            get() = _navigateToAccountInfo
+    private val _navigateToInfo = MutableLiveData<String>()
+    val navigateToInfo: LiveData<String>
+            get() = _navigateToInfo
 
     private val _navigateToTransactionInfo = MutableLiveData<String>()
     val navigateToTransactionInfo: LiveData<String>
         get() = _navigateToTransactionInfo
 
     fun doneNavigating(){
-        _navigateToAccountInfo.value = null
+        _navigateToInfo.value = null
         _navigateToTransactionInfo.value = null
     }
 
@@ -116,10 +116,9 @@ class NetworkInfoViewModel(
     }
 
     fun onSearch(){
-        if (searchFieldData.length == 36)
-            _navigateToAccountInfo.value = searchFieldData
-        else if(searchFieldData.length == 51)
-            _navigateToTransactionInfo.value = searchFieldData
+        if (searchFieldData.length == 36 || searchFieldData.length == 51)
+            _navigateToInfo.value = searchFieldData
+
     }
 
 }

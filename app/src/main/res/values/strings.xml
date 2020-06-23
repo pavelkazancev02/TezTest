@@ -30,6 +30,9 @@
     <string name="sign_up">Sign Up</string>
     <string name="do_not_have_an_account">Do not have an account?</string>
     <string name="last_7_days">Last 7 Days</string>
+    <string name="transaction">Transaction</string>
+    <string name="sender">Sender</string>
+    <string name="receiver">Receiver</string>
 
     <string-array name="networkType">
         <item>Mainnet</item>

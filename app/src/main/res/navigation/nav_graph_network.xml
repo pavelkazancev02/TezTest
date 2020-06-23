@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_networkInfoFragment_to_accountInfoFragment"
             app:destination="@id/accountInfoFragment" />
+        <action
+            android:id="@+id/action_networkInfoFragment_to_transactionInfoFragment"
+            app:destination="@id/transactionInfoFragment" />
     </fragment>
     <fragment
         android:id="@+id/accountInfoFragment"
@@ -37,4 +40,13 @@
         android:name="com.pavelkazancev02.teztest.ui.settings.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/transactionInfoFragment"
+        android:name="com.pavelkazancev02.teztest.ui.transaction_info.TransactionInfoFragment"
+        android:label="TransactionInfoFragment"
+        tools:layout="@layout/fragment_transaction_info">
+    <argument
+        android:name="transactionHash"
+        app:argType="string" />
+    </fragment>
 </navigation>

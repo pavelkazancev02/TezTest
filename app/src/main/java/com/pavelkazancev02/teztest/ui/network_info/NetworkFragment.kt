@@ -1,21 +1,14 @@
 package com.pavelkazancev02.teztest.ui.network_info
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
-import com.bumptech.glide.Glide
-import com.pavelkazancev02.teztest.R
 import com.pavelkazancev02.teztest.databinding.FragmentNetworkBinding
-import com.pavelkazancev02.teztest.ui.subscriptions.SubscriptionsViewModel
-import com.pavelkazancev02.teztest.ui.subscriptions.SubscriptionsViewModelFactory
-import kotlinx.android.synthetic.main.fragment_network.*
 
 class NetworkFragment : Fragment() {
 
@@ -45,12 +38,19 @@ class NetworkFragment : Fragment() {
 //            Navigation.findNavController(it).navigate(R.id.action_networkInfoFragment_to_accountInfoFragment)
 //        }
 
-        networkInfoViewModel.navigateToAccountInfo.observe(this, Observer {
+        networkInfoViewModel.navigateToInfo.observe(this, Observer {
                 navEvent ->
             navEvent?.let {
+                if (navEvent.length==36){
                 this.findNavController().navigate(
                     NetworkFragmentDirections.actionNetworkInfoFragmentToAccountInfoFragment(navEvent))
                 networkInfoViewModel.doneNavigating()
+                }
+                else if (navEvent.length==51){
+                    this.findNavController().navigate(
+                        NetworkFragmentDirections.actionNetworkInfoFragmentToTransactionInfoFragment(navEvent))
+                    networkInfoViewModel.doneNavigating()
+                }
             }
         })
 

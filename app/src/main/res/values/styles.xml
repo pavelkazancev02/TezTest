@@ -52,5 +52,12 @@
         <item name="android:textSize">20sp</item>
     </style>
 
-
+    <style name="general_data_style_transactions">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:textColor">@color/black1</item>
+        <item name="android:textSize">14sp</item>
+    </style>
 </resources>

@@ -28,8 +28,6 @@ class AccountInfoViewModel(private val searchFieldData: String = "", val databas
 
     val retrofitService = TezosApi.getRetrofitService()
 
-    val networkType = NETWORK_TYPE
-
     var accountType = "User Account"
 
     private val  _lastAccount = MutableLiveData<SubscribedAccount?>()
